@@ -1,0 +1,2 @@
+include ':app', ':binder_master_02'
+rootProject.name='binder_master'

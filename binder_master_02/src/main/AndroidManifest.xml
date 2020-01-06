@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.app.binder.a">
+    package="com.app.binder.b">
 
     <application
         android:allowBackup="true"
@@ -18,13 +18,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".service.LoginService"
+        <!--enabled 是否可以被系统实例化  exported 是否能被其他应用隐式调用  process 应用程序需要使用该服务需要创建该进程-->
+        <service
+            android:name=".service.LoginService"
             android:enabled="true"
             android:exported="true"
-            android:process=":remote">
-            <intent-filter>
-                <action android:name="Binder02_to_Binder01"/>
-            </intent-filter>
+            android:process=":remote_service">
+          <intent-filter>
+              <!--激活Service的唯一标识-->
+              <action android:name="Binder01_to_Binder02"/>
+          </intent-filter>
         </service>
     </application>
 
